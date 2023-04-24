@@ -12,6 +12,7 @@ data "azurecaf_name" "linux" {
   name          = each.value.name
   resource_type = "azurerm_linux_virtual_machine"
   prefixes      = var.global_settings.prefixes
+  suffixes      = var.global_settings.suffixes
   random_length = var.global_settings.random_length
   clean_input   = true
   passthrough   = var.global_settings.passthrough
@@ -27,6 +28,7 @@ data "azurecaf_name" "linux_computer_name" {
   name          = try(each.value.computer_name, each.value.name)
   resource_type = "azurerm_linux_virtual_machine"
   prefixes      = var.global_settings.prefixes
+  suffixes      = var.global_settings.suffixes
   random_length = var.global_settings.random_length
   clean_input   = true
   passthrough   = var.global_settings.passthrough
