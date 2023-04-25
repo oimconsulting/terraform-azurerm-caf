@@ -52,7 +52,7 @@ resource "azurerm_resource_provider_registration" "aks_registration_preview" {
 
 resource "azurerm_kubernetes_cluster" "aks" {
   depends_on = [
-    null_resource.aks_registration_preview
+    azurerm_resource_provider_registration.aks_registration_preview
   ]
   name                              = azurecaf_name.aks.result
   location                          = local.location
