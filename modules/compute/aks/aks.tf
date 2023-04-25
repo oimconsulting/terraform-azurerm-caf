@@ -40,17 +40,17 @@ resource "azurecaf_name" "rg_node" {
 
 
 # Needed as introduced in >2.79.1 - https://github.com/hashicorp/terraform-provider-azurerm/issues/13585
-resource "null_resource" "aks_registration_preview" {
-  provisioner "local-exec" {
-    command = "az feature register --namespace Microsoft.ContainerService -n AutoUpgradePreview"
-  }
-}
+# resource "null_resource" "aks_registration_preview" {
+#   provisioner "local-exec" {
+#     command = "az feature register --namespace Microsoft.ContainerService -n AutoUpgradePreview"
+#   }
+# }
 ### AKS cluster resource
 
 resource "azurerm_kubernetes_cluster" "aks" {
-  depends_on = [
-    null_resource.aks_registration_preview
-  ]
+  # depends_on = [
+  #   null_resource.aks_registration_preview
+  # ]
   name                              = azurecaf_name.aks.result
   location                          = local.location
   resource_group_name               = local.resource_group_name
